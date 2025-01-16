@@ -1,0 +1,45 @@
+[tool.poetry]
+name = "database-dimension"
+version = "0.1.0"
+description = ""
+authors = ["Blake Larson <wokebloke@icloud.com>"]
+readme = "README.md"
+packages = [
+    { include = "database_dimension", from = "source_code" }
+]
+
+[tool.poetry.dependencies]
+foundation = { path = "../Foundation", develop = true }
+python = ">=3.12"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+pytest-asyncio = "^0.23.5"
+
+[tool.pytest.ini_options]
+addopts = "-v -s"
+pythonpath = ["source_code"]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+markers = [
+    "quicktest: mark a test as a quick test",
+]
+
+[tool.ruff]
+line-length = 115
+src = ["source_code"]
+
+[tool.ruff.lint]
+select = ["F", "E", "I"]
+ignore = ["E501"]
+per-file-ignores = { "__init__.py" = ["F401"] }
+
+[tool.ruff.lint.isort]
+force-sort-within-sections = true
+combine-as-imports = true
+split-on-trailing-comma = true
+relative-imports-order = "closest-to-furthest"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
