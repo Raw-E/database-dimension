@@ -11,6 +11,8 @@ packages = [
 [tool.poetry.dependencies]
 foundation = { path = "../Foundation", develop = true }
 python = ">=3.12"
+pymongo = ">=4.9.2"
+motor = ">=3.6.1"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.0"
@@ -39,6 +41,7 @@ force-sort-within-sections = true
 combine-as-imports = true
 split-on-trailing-comma = true
 relative-imports-order = "closest-to-furthest"
+known-first-party = ["foundation", "fast_server", "dev_pytopia"]
 
 [build-system]
 requires = ["poetry-core"]
